@@ -1,0 +1,34 @@
+use bookDetails
+db.createCollection('books')
+db.books.insertMany([
+  {
+    name: 'The Great Gatsby',
+    author: 'F. Scott Fitzgerald',
+    publishedYear: 1925,
+    pages: 218
+  },
+  {
+    name: 'To Kill a Mockingbird',
+    author: 'Harper Lee',
+    publishedYear: 1960,
+    pages: 281
+  },
+  {
+    name: '1984',
+    author: 'George Orwell',
+    publishedYear: 1949,
+    pages: 328
+  },
+  {
+    name: 'The Catcher in the Rye',
+    author: 'J.D. Salinger',
+    publishedYear: 1951,
+    pages: 234
+  },
+  {
+    name: 'Pride and Prejudice',
+    author: 'Jane Austen',
+    publishedYear: 1813,
+    pages: 279
+  }
+])

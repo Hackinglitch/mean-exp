@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Bi-cycle Models</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+			margin: 0;
+		}
+		h1 {
+			font-size: 36px;
+			margin: 0;
+			padding: 20px;
+			background-color: #333;
+			color: #fff;
+			text-align: center;
+		}
+		.container {
+			margin: 50px auto;
+			max-width: 800px;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0 0 10px rgba(0,0,0,0.1);
+			border-radius: 5px;
+		}
+		.card {
+			background-color: #eee;
+			padding: 20px;
+			margin-bottom: 20px;
+			border-radius: 5px;
+			box-shadow: 0 0 5px rgba(0,0,0,0.1);
+		}
+		.card h2 {
+			font-size: 24px;
+			margin: 0;
+			color: #333;
+		}
+		.card img {
+			display: block;
+			max-width: 100%;
+			margin: 20px auto;
+		}
+	</style>
+</head>
+<body>
+	<h1>Bi-cycle Models</h1>
+	<div ng-controller="BicycleController as bike">
+		<div class="container">
+			<div class="card" ng-repeat="model in bike.models">
+				<h2>{{model.name}}</h2>
+				<img ng-src="{{model.image}}">
+				<p>{{model.description}}</p>
+				<p>Price: {{model.price | currency}}</p>
+			</div>
+		</div>
+	</div>
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('BicycleController', function() {
+			this.models = [
+				{
+					name: "Mountain Bike",
+					image: "https://via.placeholder.com/300x200?text=Mountain+Bike",
+					description: "A sturdy bike designed for off-road adventures.",
+					price: 599.99
+				},
+				{
+					name: "Road Bike",
+					image: "https://via.placeholder.com/300x200?text=Road+Bike",
+					description: "A lightweight bike designed for speed and efficiency.",
+					price: 899.99
+				},
+				{
+					name: "City Bike",
+					image: "https://via.placeholder.com/300x200?text=City+Bike",
+					description: "A comfortable bike designed for commuting and leisurely rides.",
+					price: 449.99
+				}
+			];
+		});
+	</script>
+</body>
+</html>

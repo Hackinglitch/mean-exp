@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Cricket Score Board</title>
+</head>
+
+<body ng-controller="scoreController">
+  <h2>Cricket Score Board</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Team</th>
+        <th>Score</th>
+        <th>Overs</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="team in teams">
+        <td>{{team.name}}</td>
+        <td>{{team.score}}</td>
+        <td>{{team.overs}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <form ng-submit="updateScore()">
+    <label for="team1Name">Team 1:</label>
+    <input type="text" id="team1Name" ng-model="teams[0].name">
+    <label for="team1Score">Score:</label>
+    <input type="number" id="team1Score" ng-model="teams[0].score">
+    <label for="team1Overs">Overs:</label>
+    <input type="number" id="team1Overs" ng-model="teams[0].overs">
+
+    <label for="team2Name">Team 2:</label>
+    <input type="text" id="team2Name" ng-model="teams[1].name">
+    <label for="team2Score">Score:</label>
+    <input type="number" id="team2Score" ng-model="teams[1].score">
+    <label for="team2Overs">Overs:</label>
+    <input type="number" id="team2Overs" ng-model="teams[1].overs">
+
+    <button type="submit">Update Score</button>
+  </form>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+  <script>
+    angular.module('myApp', [])
+      .controller('scoreController', function($scope) {
+        $scope.teams = [{
+            name: 'Team 1',
+            score: 0,
+            overs: 0
+          },
+          {
+            name: 'Team 2',
+            score: 0,
+            overs: 0
+          }
+        ];
+
+        // $scope.updateScore = function() {
+        //   // Code to update the score goes here
+        // };
+      });
+  </script>
+</body>
+
+</html>

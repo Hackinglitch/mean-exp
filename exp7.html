@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html ng-app="todoApp">
+
+<head>
+  <meta charset="UTF-8">
+  <title>TODO List for {{today | date:'yyyy-MM-dd'}}</title>
+</head>
+
+<body ng-controller="todoController">
+
+  <h1>TODO List for {{today | date:'yyyy-MM-dd'}}</h1>
+
+  <form ng-submit="addTodo()">
+    <input type="text" ng-model="newTodoText" placeholder="Add a new task">
+    <button type="submit">Add</button>
+  </form>
+
+  <ul>
+    <li ng-repeat="todo in todos">
+      <input type="checkbox" ng-model="todo.done">
+      <span ng-class="{'done': todo.done}">{{todo.text}}</span>
+    </li>
+  </ul>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+  <script>
+    angular.module('todoApp', [])
+      .controller('todoController', function($scope) {
+        $scope.today = new Date();
+        $scope.todos = [{
+            text: 'Buy milk',
+            done: false
+          },
+          {
+            text: 'Do laundry',
+            done: true
+          },
+          {
+            text: 'Pay bills',
+            done: false
+          }
+        ];
+
+        $scope.addTodo = function() {
+          if ($scope.newTodoText) {
+            $scope.todos.push({
+              text: $scope.newTodoText,
+              done: false
+            });
+            $scope.newTodoText = '';
+          }
+        };
+      });
+  </script>
+
+  <style>
+    .done {
+      text-decoration: line-through;
+    }
+  </style>
+
+</body>
+
+</html>

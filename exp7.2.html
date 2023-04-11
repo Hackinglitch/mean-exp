@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+  <meta charset="UTF-8">
+  <title>TODO List - {{today | date:'dd MMMM yyyy'}}</title>
+</head>
+
+<body ng-controller="todoController">
+  <h2>TODO List - {{today | date:'dd MMMM yyyy'}}</h2>
+  <form ng-submit="addTodo()">
+    <input type="text" ng-model="newTodo" placeholder="Add a new task">
+    <button type="submit">Add</button>
+  </form>
+  <ul>
+    <li ng-repeat="todo in todos">
+      <input type="checkbox" ng-model="todo.done">
+      <span ng-class="{'done': todo.done}">{{todo.text}}</span>
+      <button ng-click="removeTodo($index)">Remove</button>
+    </li>
+  </ul>
+
+  <style>
+    .done {
+      text-decoration: line-through;
+    }
+  </style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+  <script>
+    angular.module('myApp', [])
+      .controller('todoController', function($scope) {
+        $scope.today = new Date();
+        $scope.todos = [];
+
+        $scope.addTodo = function() {
+          $scope.todos.push({
+            text: $scope.newTodo,
+            done: false
+          });
+          $scope.newTodo = '';
+        };
+
+        $scope.removeTodo = function(index) {
+          $scope.todos.splice(index, 1);
+        };
+      });
+  </script>
+</body>
+
+</html>

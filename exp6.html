@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Book Details</title>
+  <style>
+    .available {
+      color: green;
+      font-weight: bold;
+    }
+    
+    .not-available {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body ng-controller="bookController">
+  <h2>{{book.title}}</h2>
+  <p>Author: {{book.author}}</p>
+  <p>ISBN: {{book.isbn}}</p>
+  <p>Availability: <span ng-class="{'available': book.available, 'not-available': !book.available}">{{book.available ? 'Available' : 'Not available'}}</span></p>
+  <p>Issued status: {{book.issued ? 'Issued' : 'Not issued'}}</p>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+  <script>
+  angular.module('myApp', [])
+    .controller('bookController', function($scope) {
+      $scope.book = {
+        title: 'The Great Gatsby',
+        author: 'F. Scott Fitzgerald',
+        isbn: '978-3-16-148410-0',
+        available: true,
+        issued: false
+      };
+    });
+  </script>
+</body>
+
+</html>

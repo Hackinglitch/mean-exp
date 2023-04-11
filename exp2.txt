@@ -1,0 +1,23 @@
+{
+    "_id": ObjectId(),
+    "name": String,
+    "address": {
+      "street": String,
+      "city": String,
+      "state": String,
+      "zip": String
+    },
+    "menu": [
+      {
+        "item": String,
+        "price": Number
+      },
+      {
+        "item": String,
+        "price": Number
+      },
+      ...
+    ]
+  }
+/*db.restaurants.find({"address.city": "New York"}).skip(3).limit(5)
+db.restaurants.find({"menu.item": "Dosa"}, {_id: 1, name: 1})*/  
